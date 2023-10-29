@@ -355,7 +355,7 @@ table {
 
     /** Visualization 2 **/
 
-    d3.csv("vis2_data.csv").then(function(data) {
+    d3.csv("https://raw.githubusercontent.com/VisDesignStudies/module-two-data-stories-lstach/main/vis2_data.csv").then(function(data) {
 
       var table = d3.select("table");
       var tbody = table.select("tbody");
@@ -394,8 +394,8 @@ table {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
 
-    //Read the data
-    d3.csv("vis3_data.csv", function(d){
+    
+    d3.csv("https://raw.githubusercontent.com/VisDesignStudies/module-two-data-stories-lstach/a94971b6c267ba91e0633383e1016fbd591ec296/vis3_data.csv", function(d){
         return { date: d3.timeParse("%m/%d/%Y")(d.date), value1: d.value1, value2: d.value2 };
     }).then(function(data) {
         // Add X axis
