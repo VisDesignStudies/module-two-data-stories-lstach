@@ -4,37 +4,317 @@
 <title>Page Title</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+
+.tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.box {
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  clear: both;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<h1>Hello!</h1>
 
-<button onclick="bloomberg()">
-    <img src="https://i.ibb.co/qgccdvm/bloomberg.png" alt="bloomberg"/>
-</button>
+    <h1>That's the thing about elections- sometimes you lose them.</h1>
+    <h2>A reflection on the 'inaccurate' polls of the 2016 presidential election.</h2>
+    <h3>By Logan Stach</h3>
 
-<button onclick="scott()">
-    <img src="https://i.ibb.co/VwKQfCt/Scott-Keeter.jpg" alt="Scott-Keeter"/>
-</button>
+    <p>
+        It was a common lamentation in the aftermath of the 2016 Presidential Election that saw Donald Trump take the presidency that the polls were unprecedentedly inaccurate.  
+        Mainstream news outlets and individual Americans alike expressed shock that Trump, the national underdog, clinched a victory.  
+        The <a href="https://www.nytimes.com/2017/05/31/upshot/a-2016-review-why-key-state-polls-were-wrong-about-trump.html">New York Times</a> posited in May of 2017, 
+        “Is political polling fundamentally broken?  Or were the errors understandable and correctable?”
+    </p>
+    
 
-<button onclick="cbs()">
-    <img src="https://i.ibb.co/4NKXbht/cbs.png" alt="cbs"/>
-</button>
 
-<button onclick="maddow()">
-    <img src="https://i.ibb.co/jfgwYT0/rachel-maddow.jpg" alt="rachel-maddow"/>
-</button>
+    <p>
+        Even Trump himself expressed sincere surprise at his victory because of the poll results, 
+        having rented a small hotel ballroom to give his concession speech, saying: 
+        <a href="https://www.bloomberg.com/politics/articles/2016-12-14/trump-says-he-expected-to-lose-election-because-of-poll-results?leadSource=uverify%20wall">"I said if we’re going to lose I don’t want a big ballroom.” </a>
+    </p>
 
-<button onclick="pew()">
-    <img src="https://i.ibb.co/dt1jHMS/pew-research-center.png" alt="pew-research-center"/>
-</button>
+    <!-- Visualization 1 -->
+    <div>
+
+        <div style="  display: flex;">
+            <button onclick="scott()">
+                <img src="https://i.ibb.co/VwKQfCt/Scott-Keeter.jpg" alt="Scott-Keeter"/>
+            </button>
+            <h2 id="scottQuote" hidden>
+                <a href="https://www.cbsnews.com/news/2016-polls-president-trump-clinton-what-went-wrong/"> 
+                    “I think the profession did take a wake-up call.”
+                </a> 
+            </h2>  
+        </div> 
+
+
+        <div style="display: flex;">
+            <button onclick="cbs()">
+                <img src="https://i.ibb.co/4NKXbht/cbs.png" alt="cbs"/>
+            </button>
+            <h2 id="cbsQuote" hidden>
+                <a href="https://www.cbsnews.com/news/2016-polls-president-trump-clinton-what-went-wrong/">
+                    “Can we trust them [the polls] now?”
+                </a>
+            </h2>
+        </div> 
+
+        <div style="display: flex;">
+            <button onclick="maddow()">
+                <img src="https://i.ibb.co/jfgwYT0/rachel-maddow.jpg" alt="rachel-maddow"/>
+            </button>
+
+            <h2 id="maddowQuote" hidden>
+                <a href="https://www.independent.co.uk/arts-entertainment/tv/news/donald-trump-wins-msnbc-rachel-maddow-you-re-not-dead-dreaming-a7406906.html">
+                    “You're awake by the way. You're not having a terrible, terrible dream. Also, you're not dead and you haven't gone to hell. This is your life now.”
+                </a>
+            </h2>
+        </div> 
+
+        <div style="display: flex;">
+            <button onclick="pew()">
+                <img src="https://i.ibb.co/dt1jHMS/pew-research-center.png" alt="pew-research-center"/>
+            </button>
+            <h2 id="pewQuote" hidden>
+                <a href="https://www.pewresearch.org/short-reads/2016/11/09/why-2016-election-polls-missed-their-mark/">
+                    “How could the polls have been so wrong about the state of the election?”</a>
+                
+            </h2>
+        </div> 
+
+        <div style="display: flex;">
+            <button onclick="trump()">
+                <img src="https://i.ibb.co/frKcJ06/Donald-Trump-official-portrait.jpg" alt="Donald-Trump-official-portrait" />
+            </button>
+            <h2 id="trumpQuote" hidden>
+                <a href="https://www.bloomberg.com/politics/articles/2016-12-14/trump-says-he-expected-to-lose-election-because-of-poll-results?leadSource=uverify%20wall">
+                    “I said if we’re going to lose I don’t want a big ballroom.”</a>
+            </h2>
+        </div> 
+    </div>
+    <!-- End Visualization 1 -->
+
+    <p>
+        However, much of the jarred reaction to Trump’s (admittedly upset) election victory 
+        in 2016 was due not to major poll inaccuracy.  The polls themselves, while 
+        imperfect, were actually roughly as accurate (and inaccurate) as they were in other elections.  
+        This can be seen by comparing the errors from the 
+        2016 Presidential elections to the historical average.
+    </p>
+
+    <!-- Visualization 2-->
+    <table>
+        <thead>
+          <tr>
+            <th>Cycle</th>
+            <th>Primary</th>
+            <th>General</th>
+            <th>Governor</th>
+            <th>U.S. Senate</th>
+            <th>U.S. House</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--Rows of the CSV go here.-->
+        </tbody>
+      </table>
+      <p>
+        <a href="https://fivethirtyeight.com/features/the-polls-are-all-right/">Source</a> ('0' indicates that an election was not held that cycle)
+      </p>
+      
+
+    <!-- End of Visualization 2-->
+
+
+
+    <p>
+        There are two additional key takeaways here:
+
+        First is that the polls for the presidency weren’t the least accurate of the 2016 election.  
+        That title belongs to primary polling, which, as 538 notes, is especially difficult to poll for.  
+        Primary polling had an error of 10.1 percentage points vs. the general election’s 4.8 percentage 
+        points. It is true that in 2016 the polling error for the primaries was especially bad- 10.1 
+        percentage points compared to an average of 8.7 since 2000.
+    </p>
+
+    <p>
+        Second is that there was no outcry from the media about polling inaccuracy for other surprise Republican election victories in the 2016 election.
+        Governor races, Senate races, and House races all possessed higher polling inaccuracies in the 2015-2016 election cycle than the election for the President.  
+        And yet, this frustration and surprise was directed almost exclusively at the polling for Trump’s victory.
+        
+    </p>
+
+    <p>
+        Furthermore, the polling as time inched closer to election day became much more in-line with a Trump victory being at least plausible.  
+        Consider this graph charting the gap in the polling lead between Trump and Clinton in the immediate lead-up to the election:
+    </p>
+
+
+    <!-- Visualization 3 -->
+    
+
+    <div id="vis3"></div>
+    <div id="tooltip" class="tooltip">
+        Date: <span id="date"></span>
+    </div>
+
+    <div style="margin-left: 55px;">
+        <div class="box blue"></div>
+        <p>Clinton</p>
+    </div>
+
+    <div style="margin-left: 55px;">
+        <div class="box red"></div>
+        <p>Trump</p>
+    </div>
+
+    <a href="https://projects.fivethirtyeight.com/2016-election-forecast/national-polls/">Source</a>
+
+    <!-- End Visualization 3-->
+
+    <p>
+        It’s pretty clear that the polls were neck-and-neck by the time election day came along, likely in 
+        part due to the October Surprise of James Comey’s investigation into <a href="https://www.jacksonville.com/story/news/nation-world/2016/10/28/fbis-october-surprise-complicates-race-hillary-clinton/15729550007/">
+        Clinton’s use of a private email server</a>. 
+    </p>
+
+    <p>
+        Irrespective of the reason, it doesn’t matter what the sentiment is prior to election day.  What matters is how voters feel when they go to vote.
+        As this data shows, they felt more in line with Trump (or at least less in line with Clinton) right before and on election day than they 
+        did throughout the whole campaign.  Even if Clinton was ahead, her lead was small enough to be within the margin of error.
+    </p>
+
+    <p>
+        So why the many exclamations of surprise at Trump’s unlikely, but still statistically sound, victory?  
+        Why did Trump’s win bring so much unique shock that other, more surprising Republican wins didn’t?
+          It’s all because of Trump himself.
+    </p>
+
+    <p>
+        Trump was uniquely unpresidential as a candidate.  He was a bully on the debate stage, 
+        devolving into personal attacks on not only his opponents’ characters, but their wives, husbands, 
+        and families.  When questioned on his behavior by Fox News host Megyn Kelly, who asked him, 
+        “You’ve called women you don’t like fat pigs, dogs, slobs, and disgusting animals,” Trump could only respond with a joke:
+    </p>
+
+    <h3>
+        <a href="https://apnews.com/article/trump-megyn-kelly-interview-siriusxm-2024-dd62d31854e6f19659df442234891d75">“Only Rosie O’Donnell.”</a>
+    </h3>
+
+    <p>
+        Trump was a uniquely unprofessional, showman-like, comedic candidate for president.  Deserved or not, 
+        he received a unique amount of criticism for this behavior.  Even 
+        
+        <a href="https://www.nytimes.com/2017/10/21/opinion/sunday/jimmy-carter-lusts-trump-posting.html ">former Democratic president Jimmy Carter acknowledged this</a>,
+        saying, “I think the media have been harder on Trump than any other president certainly that I’ve known about.  I think they feel 
+        free to claim that Trump is mentally deranged and everything else without hesitation.”
+    </p>
+
+    <p>
+        It’s worth noting that Carter isn’t exactly a Trump ally, as
+        <a href="https://www.npr.org/2019/06/28/737008785/jimmy-carter-says-he-sees-trump-as-an-illegitimate-president ">he later said in 2019</a>
+        that Trump is an “illegitmate President” because of allegations of Russian interference in the 2016 election.
+    </p>
+    
+    <!-- Visualization 4 -->
+    <div>
+        <div style="display: flex;">
+            <button onclick="kelly()">
+
+                <img src="https://i.ibb.co/3pf3qty/megyn-kelly.png" alt="megyn-kelly" />
+
+            </button>
+            <h2 id="kellyQuote" hidden>
+                “You’ve called women you don’t like fat pigs, dogs, slobs, and disgusting animals.”
+            </h2>
+        </div>
+
+
+        <div style="display: flex;">
+            <button onclick="cruz()">
+
+                <img src="https://i.ibb.co/Y8d1XQZ/ted-cruz.jpg" alt="Ted-Cruz-portrait" />
+            </button>
+            <h2 id="cruzQuote" hidden>
+                “We don’t want a president who seems to have a real issue with strong women.”
+            </h2>
+        </div> 
+
+
+
+        <div style="display: flex;">
+            <button onclick="mccain()">
+
+                <img src="https://i.ibb.co/fdmkSRP/john-mccain.png" alt="john-mccain"/></a>
+
+            </button>
+            <h2 id="mccainQuote" hidden>
+                “Donald Trump’s behavior this week, concluding with the disclosure of his demeaning comments about women and his boasts about sexual assaults, make it impossible to continue to offer even conditional support for his candidacy.”
+            </h2>
+        </div> 
+
+    </div>
+
+
+    <p>
+        The only thing unique about Trump’s election victory was Trump himself.  While it is certainly a surprise that someone as 
+        brash as him was able to clinch the presidency, the polling leading up to his victory in 2016 is nothing more than unremarkable.
+    </p>
+
+    <p>
+        That's the thing about elections- sometimes you lose them.
+    </p>
+
+
+
+<script src="https://d3js.org/d3.v6.js"></script>
 
 <script>
+    /** Visualization 1 **/
 
     function bloomberg(){
         console.log("blooming!!");
@@ -42,19 +322,206 @@ body {
 
     function scott(){
         console.log("scott");
+        const elem = document.getElementById("scottQuote");
+        elem.hidden = !elem.hidden;
     }
 
     function cbs(){
         console.log("cbs");
+        const elem = document.getElementById("cbsQuote");
+        elem.hidden = !elem.hidden;
     }
 
     function maddow(){
         console.log("maddow");
+        const elem = document.getElementById("maddowQuote");
+        elem.hidden = !elem.hidden;
     }
 
     function pew(){
         console.log("pew");
+        const elem = document.getElementById("pewQuote");
+        elem.hidden = !elem.hidden;
     }
+
+    function trump(){
+        const elem = document.getElementById("trumpQuote");
+        elem.hidden = !elem.hidden;
+    }
+    /***********************************/
+
+
+
+
+    /** Visualization 2 **/
+
+    d3.csv("vis2_data.csv").then(function(data) {
+
+      var table = d3.select("table");
+      var tbody = table.select("tbody");
+
+      var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr");
+
+      var cells = rows.selectAll("td")
+        .data(function(row) {
+          return [row.Cycle, row.Primary, row.General, row.Governor, row['U.S. Senate'], row['U.S. House']];
+        })
+        .enter()
+        .append("td")
+        .text(function(d) { return d; });
+    });
+    /*********************************************/
+
+
+
+
+    /** Visualization 3 **/
+    //vis3_data
+    // set the dimensions and margins of the line chart
+    const margin = {top: 10, right: 30, bottom: 30, left: 60},
+        width = 2000 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    const svg = d3.select("#vis3")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+
+    //Read the data
+    d3.csv("vis3_data.csv", function(d){
+        return { date: d3.timeParse("%m/%d/%Y")(d.date), value1: d.value1, value2: d.value2 };
+    }).then(function(data) {
+        // Add X axis
+        const x = d3.scaleTime()
+            .domain(d3.extent(data, function(d) { return d.date; }))
+            .range([ 0, width ]);
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x));
+
+        // Add Y axis
+        const y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([ height, 0 ]);
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+
+        // Create the tooltip div
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+
+        // Add the line for Clinton's poll numbers
+        svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 5.0)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.date) })
+                .y(function(d) { return y(d.value1) })
+            );
+            
+
+        // Add the line for Trump's poll numbers
+        svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "red")
+            .attr("stroke-width", 5.0)
+            .attr("d", d3.line()
+                .x(function(d) { return x(d.date) })
+                .y(function(d) { return y(d.value2) })
+            );
+
+
+
+        // Function to format the date
+        // (this is used in creating the circle data points for the tooltip)
+        function formatDate(date) {
+            const format = d3.timeFormat("%m/%d/%Y");
+            return format(date);
+        }
+
+        // Create circles for each data point (for Clinton)
+        svg.selectAll(".data-point")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "data-point")
+        .attr("cx", function(d) { return x(d.date); })
+        .attr("cy", function(d) { return y(d.value1); })
+        .attr("r", 5) // Adjust the radius as needed
+        .style("fill", "steelblue")
+        .on("mouseover", function(event, d) {
+            tooltip.transition()
+            .duration(200)
+            .style("opacity", 1);
+            tooltip.html("Date: " + formatDate(d.date) + "<br>Value1: " + d.value1)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 30) + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+            .duration(200)
+            .style("opacity", 0);
+        });
+
+
+        // Create circles for each data point (for Trump)
+        svg.selectAll(".data-point-trump")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "data-point-trump")
+        .attr("cx", function(d) { return x(d.date); })
+        .attr("cy", function(d) { return y(d.value2); })
+        .attr("r", 5) // Adjust the radius as needed
+        .style("fill", "red")
+        .on("mouseover", function(event, d) {
+            tooltip.transition()
+            .duration(200)
+            .style("opacity", 1);
+            tooltip.html("Date: " + formatDate(d.date) + "<br>Value2: " + d.value2)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 30) + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+            .duration(200)
+            .style("opacity", 0);
+        });
+    });
+    /***********************************/
+
+
+
+
+
+    /** Visualization 4 **/
+
+    function kelly(){
+        const elem = document.getElementById("kellyQuote");
+        elem.hidden = !elem.hidden;
+    }
+
+    function cruz(){
+        const elem = document.getElementById("cruzQuote");
+        elem.hidden = !elem.hidden;
+    }
+
+    function mccain(){
+        const elem = document.getElementById("mccainQuote");
+        elem.hidden = !elem.hidden;
+    }
+    /*******************/
 </script>
 
 
